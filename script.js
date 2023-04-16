@@ -1,5 +1,6 @@
 window.onload = function() {
     addBookToLibrary();
+    toggleForm();
 }
 
 let myLibrary = [];
@@ -94,4 +95,24 @@ function toggleRead() {
             checkIfRead();
         })
     }
+}
+
+function toggleForm() {
+    const form = document.querySelector('#form-container');
+    const btn = document.querySelector('#add-btn');
+    const exit = document.querySelector('#form-exit')
+    console.log(form.style.display)
+    btn.addEventListener('click', () => {
+        if (form.style.display === 'none') {
+            form.style.display = 'flex';
+        }
+        else if (form.style.display === 'flex') {
+            form.style.display = 'none';
+        }
+    })
+    exit.addEventListener('click', () => {
+        if (form.style.display === 'flex') {
+            form.style.display = 'none';
+        }
+    })
 }

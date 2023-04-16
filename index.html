@@ -9,33 +9,47 @@
     <title>Book Library</title>
 </head>
 <body>
-    <form id="add-book-form" method="get">
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author" required>
+    <div id="form-container" style="display: none;">
+        <form id="add-book-form" method="get" >
+            <div id="form-exit">X</div>
 
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" required>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required>
 
-        <label for="pages">Number of Pages</label>
-        <input type="text" id="pages" name="pages" required>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
 
-        <fieldset>
-            <legend>Have you read this book yet?</legend>
-            <input class="read" type="radio" value="Read" name="read" required>
-            <label for="read">Read</label>
+            <label for="pages">Number of Pages</label>
+            <input type="tel" id="pages" name="pages" required>
 
-            <input class="read" type="radio" value="Not Read" name="read">
-            <label for="read">Not Read</label>
-        </fieldset>
-        
-        <button id="add-book-btn">Add New Book</button>
-    </form>
+            <fieldset>
+                <legend>Have you read this book yet?</legend>
+                <input class="read" type="radio" value="Read" name="read" required>
+                <label for="read">Read</label>
 
+                <input class="read" type="radio" value="Not Read" name="read">
+                <label for="read">Not Read</label>
+            </fieldset>
+            
+            <button id="add-book-btn">+ Add Book</button>
+        </form>
+    </div>
+    <div id="header">
+        <div id="header-title">
+            <img src="images/book-open-variant.svg" alt="Book Logo">
+            <h1>Library</h1>
+        </div>
+        <button id="add-btn">+ Add New Book</button>
+    </div>
+
+
+
+
+    
     <div id="card-container">
-
+    
     </div>
     
-
     
 </body>
 </html>
