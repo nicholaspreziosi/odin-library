@@ -1,0 +1,22 @@
+#card-container {
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: repeat(auto-fit, 200px);
+}
+
+.card {
+    padding: 12px;
+    height: 250px;
+    justify-content: center;
+    display: grid;
+    grid-auto-flow: row;
+    border: 1px solid black;
+}
+
+.card-text {
+    text-align: center;
+}
+
+.read {
+    background-color: rgba(132, 248, 181, 0.5);
+}
