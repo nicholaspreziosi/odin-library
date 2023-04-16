@@ -20,17 +20,9 @@ function addBookToLibrary() {
         let pages = document.querySelector('#pages').value + ' Pages';
         let read = document.querySelector('.read:checked').value;
 
-        if (read === 'yes') {
-            read = 'Read'
-        }
-        else {
-            read = 'Not Read'
-        }
-
         let book = new Book(author, title, pages, read);
         myLibrary.push(book);
         newBookDisplay();
-        checkIfRead();
     });
 }
 
@@ -42,26 +34,33 @@ function newBookDisplay() {
         const div = document.createElement("div");
         container.appendChild(div);
         div.classList.add("card");
-        const btn = document.createElement("button");
-        div.appendChild(btn);
-        btn.textContent = 'X'
-        btn.classList.add('remove');
+        const x = document.createElement("div");
+        div.appendChild(x);
+        x.textContent = 'X'
+        x.classList.add('remove');
 
         for (const property in libraryCard) {
             const para = document.createElement("p");
             para.classList.add("card-text");
             div.appendChild(para);
             para.textContent = libraryCard[property];
-          }
+        }
+
+        div.lastChild.classList.add('read-btn');
       }
+    checkIfRead();
     removeBook();
+    toggleRead();
 }
 
 function checkIfRead() {
     let cards = document.querySelectorAll('.card')
-    for (let i = 0; i < cards.length; i++) {
-        if (cards[i].lastChild.textContent === 'Read') {
-            cards[i].classList.add('read')
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].read === 'Read') {
+            cards[i].classList.add('read');
+        }
+        else if (myLibrary[i].read === 'Not Read') {
+            cards[i].classList.remove('read');
         }
     }
 }
@@ -73,8 +72,26 @@ function removeBook() {
             myLibrary.splice(i, 1);
             remove[i].parentNode.parentNode.removeChild(remove[i].parentNode);
             newBookDisplay();
-            checkIfRead();
         });
     }
 }
 
+
+function toggleRead() {
+    let cards = document.querySelectorAll('.card')
+    for (let i = 0; i < myLibrary.length; i++) {
+        let read = cards[i].lastChild;
+        read.addEventListener('click', () => {
+            if (read.textContent === 'Read') {
+                myLibrary[i].read = 'Not Read';
+                read.textContent = 'Not Read'
+
+            }
+            else if (read.textContent === 'Not Read') {
+                myLibrary[i].read = 'Read';
+                read.textContent = 'Read';
+            }
+            checkIfRead();
+        })
+    }
+}
